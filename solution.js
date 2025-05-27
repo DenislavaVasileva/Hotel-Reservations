@@ -11,8 +11,8 @@ let reservation =
 
 function changeContent(className) {
     document.querySelectorAll('.custom-form').forEach(div => div.classList.add('hidden'));
-    if( document.querySelector(`.${className}`) != null){
-    document.querySelector(`.${className}`).classList.remove('hidden');
+    if (document.querySelector(`.${className}`) != null) {
+        document.querySelector(`.${className}`).classList.remove('hidden');
     }
 }
 
@@ -29,12 +29,12 @@ function getBackToPersonalData(e) {
     changeContent('guest-details-form-content');
 }
 
-
 document.querySelector('#confirm-reservation').addEventListener('click', (e) => showThanksPage(e));
 
 function showThanksPage(e) {
     e.preventDefault();
     changeContent('thank-you-content');
+}
 
 document.querySelector('#guest-details-back-btn').addEventListener('click', (e) => fillRoomForm(e));
 
@@ -70,6 +70,7 @@ function fillConfirmReservationData(customReservation) {
     document.querySelector('.confirm-reservation #guest-room-type').textContent = `Room Type: ${customReservation.roomType}`;
     document.querySelector('.confirm-reservation #guest-data-in').textContent = `Date-in: ${customReservation.startDate}`;
     document.querySelector('.confirm-reservation #guest-data-out').textContent = `Date-out: ${customReservation.endDate}`;
+}
 
 document.querySelector('#search-back-btn').addEventListener('click', (e) => fillSearchForm(e));
 
@@ -81,14 +82,13 @@ function fillSearchForm(e) {
     document.querySelector('#people').value = reservation.guestsCount;
 }
 
-
 document.querySelectorAll('.room-type').forEach(room => {
     room.addEventListener("click", (e) => selectRoomType(e))
 });
 
 function selectRoomType(e) {
     let myTarget = undefined;
-    e.preventDefault;
+    e.preventDefault();
     if (e.target.querySelector('img') != null) {
         myTarget = e.target;
     } else {
@@ -107,8 +107,10 @@ function findRoom(e) {
     reservation.roomType = roomInfo;
     console.log(reservation);
     changeContent('guest-details-form-content');
+}
 
 changeContent('search-form-content');
+
 document.querySelector('#search-form-button').addEventListener('click', (e) => searchFormData(e));
 
 function searchFormData(e) {
